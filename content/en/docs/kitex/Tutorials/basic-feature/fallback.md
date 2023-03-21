@@ -109,14 +109,14 @@ The default constructor method for creating a Fallback Policy is NewFallbackPoli
 1. **Execute fallback based on judgment of both errors and responses**  
 
 ```Go
-// 方法1：XXXArgs/XXXResult as params
+// Method 1：XXXArgs/XXXResult as params
 fallback.NewFallbackPolicy(func(ctx context.Context, args utils.KitexArgs, result utils.KitexResult, err error) (fbErr error) {
    // your fallback logic...
    result.SetSuccess(yourFallbackResult)
    return
 })
 
-// 方法2：real rpc req/resp as params
+// Method 2：real rpc req/resp as params
 fallback.NewFallbackPolicy(fallback.UnwrapHelper(func(ctx context.Context, req, resp interface{}, err error) (fbResp interface{}, fbErr error) {
    // your fallback logic...
    return
